@@ -23,7 +23,6 @@
                    <!-- create table rows 
                    Each row will have a checkbox, bound to the app's data 
                    When the checkbox is checked/unchecked, the student will be signed in/out -->
-
                     <student-row v-for="student in students" 
                         v-bind:student="student"
                         v-bind:key="student.starID"
@@ -31,7 +30,6 @@
                         v-on:student-arrived-or-left="arrivedOrLeft"
                         v-on:student-deleted="studentDeleted">
                     </student-row>
-
                 </table>
             </div>
         </div>
@@ -39,7 +37,6 @@
 </template>
 
 <script>
-
 import StudentRow from '@/components/StudentRow.vue'
 
 export default {
@@ -56,17 +53,12 @@ export default {
         }
     },
     methods: {
-        arrivedOrLeft(student, present) {
+        arrivedOrLeft(student, present) { // If student has arrived or left, alert parent and give status (present/not present)
            this.$emit('student-arrived-or-left', student, present)            
         },
-        studentDeleted(student) {
+        studentDeleted(student) { // If user wants to delete student, alert parent to execute method
             this.$emit('student-deleted', student)
         }
     }
 }
-
 </script>
-
-<style scoped>
-
-</style>

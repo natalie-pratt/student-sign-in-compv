@@ -5,15 +5,15 @@
         <td>
             <input type="checkbox" 
                 v-bind:checked="student.checked" 
-                v-on:change="arrivedOrLeft(student, $event.srcElement.checked)">
+                v-on:change="arrivedOrLeft(student, $event.srcElement.checked)"> 
         </td>
+        <!-- Only show delete button in table when user checks edit table box -->
         <td v-on:click="studentDeleted" v-show="edit">
             <img src="@/assets/delete-button-icon.png" id="delete-icon"></td>
     </tr>
 </template>
 
 <script>
-
 export default {
     name: "StudentRow",
     props: {
@@ -21,17 +21,16 @@ export default {
         edit: Boolean
     },
     methods: {
-        arrivedOrLeft(student, present) {
+        arrivedOrLeft(student, present) { // Tell parent that a student has arrived/left based on change event of checkbox
             this.$emit('student-arrived-or-left', student, present)
         },
-        studentDeleted() {
-            if (confirm (`Delete ${this.student.name}?`)) {
-                this.$emit('student-deleted', this.student)
+        studentDeleted() { // Ask to confirm whether user wants to delete student 
+            if (confirm(`Delete ${this.student.name}?`)) {
+                this.$emit('student-deleted', this.student) // If user clicks yes, alert parent to make the delete
             }
         }
     }
 }
-
 </script>
 
 <style>

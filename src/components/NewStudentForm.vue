@@ -6,7 +6,6 @@
             </ul>
         </div>
 
-
         <div class="card add-student m-2 p-2">
             <h4 class="card-title">Add new student</h4>
 
@@ -27,7 +26,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'NewStudentForm',
     emits:['student-added'],
@@ -40,7 +38,6 @@ export default {
     },
     methods: {
         addStudent() {
-
             this.errors = [] // Clear errors array
 
             if (!this.newStudentName) { // If there is no name, push error message
@@ -59,19 +56,13 @@ export default {
                     
                 }
 
-                this.$emit('student-added', student)
+                this.$emit('student-added', student) // Tell parent that student was added and send student information
                 
-                this.newStudentName = ''
+                this.newStudentName = '' // Clear form inputs
                 this.newStarID = ''
             } 
-
-
         }
     }
 }
-
 </script>
 
-<style scoped>
-
-</style>
