@@ -2,7 +2,7 @@
     <div>
         <div class="alert alert-danger" v-if="errors.length > 0">
             <ul>
-                <li v-for="error in errors">{{error}}</li>
+                <li v-for="error in errors" v-bind:key="error">{{error}}</li>
             </ul>
         </div>
 
@@ -30,6 +30,7 @@
 
 export default {
     name: 'NewStudentForm',
+    emits:['student-added'],
     data() {
         return {
             newStudentName: '',
@@ -57,24 +58,11 @@ export default {
                     present: false
                     
                 }
+
+                this.$emit('student-added', student)
                 
                 this.newStudentName = ''
                 this.newStarID = ''
-
-                this.students.sort(function(s1, s2) {
-                    
-                    // Sort student names alphabetically
-                    if (s1.name.toUpperCase() > s2.name.toUpperCase()) {
-                        return 1
-                    }
-
-                    if (s1.name.toUpperCase() < s2.name.toUpperCase()) {
-                        return -1
-                    }
-
-                    return 0
-                    
-                })
             } 
 
 
