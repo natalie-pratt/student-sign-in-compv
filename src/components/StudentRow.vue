@@ -5,9 +5,9 @@
             <td>
                 <input type="checkbox" 
                 v-bind:checked="student.checked" 
-                v-on:change="arrivedOrLeft(student, $event.target.checked)">
+                v-on:change="arrivedOrLeft(student, $event.srcElement.checked)">
             </td>
-            <td v-on:click="deleteStudent" v-show="edit">
+            <td v-on:click="studentDeleted" v-show="edit">
                 <img src="@/assets/delete-button-icon.png" id="delete-icon"></td>
         </tr>
 </template>
@@ -24,8 +24,10 @@ export default {
         arrivedOrLeft(student, present) {
             this.$emit('student-arrived-or-left', student, present)
         },
-        deleteStudent() {
-            this.$emit('delete-student', this.student)
+        studentDeleted() {
+            if (confirm (`Delete ${this.student.name}?`)) {
+                this.$emit('student-deleted', this.student)
+            }
         }
     }
 }

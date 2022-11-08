@@ -29,7 +29,7 @@
                     v-bind:key="student.starID"
                     v-bind:edit="editTable"
                     v-on:student-arrived-or-left="arrivedOrLeft"
-                    v-on:delete-student="deleteStudent">
+                    v-on:student-deleted="studentDeleted">
                     </student-row>
 
                 </table>
@@ -59,8 +59,8 @@ export default {
         arrivedOrLeft(student, present) {
            this.$emit('student-arrived-or-left', student, present)            
         },
-        deleteStudent(student) {
-            this.$emit('delete-student', student)
+        studentDeleted(student) {
+            this.$emit('student-deleted', student)
         }
     }
 }
