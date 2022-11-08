@@ -1,15 +1,15 @@
 <template>
     <tr v-bind:class="{present: student.present, absent: !student.present}">
-            <td>{{student.name}}</td>
-            <td>{{student.starID}}</td>
-            <td>
-                <input type="checkbox" 
+        <td>{{student.name}}</td>
+        <td>{{student.starID}}</td>
+        <td>
+            <input type="checkbox" 
                 v-bind:checked="student.checked" 
                 v-on:change="arrivedOrLeft(student, $event.srcElement.checked)">
-            </td>
-            <td v-on:click="studentDeleted" v-show="edit">
-                <img src="@/assets/delete-button-icon.png" id="delete-icon"></td>
-        </tr>
+        </td>
+        <td v-on:click="studentDeleted" v-show="edit">
+            <img src="@/assets/delete-button-icon.png" id="delete-icon"></td>
+    </tr>
 </template>
 
 <script>

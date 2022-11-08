@@ -25,11 +25,11 @@
                    When the checkbox is checked/unchecked, the student will be signed in/out -->
 
                     <student-row v-for="student in students" 
-                    v-bind:student="student"
-                    v-bind:key="student.starID"
-                    v-bind:edit="editTable"
-                    v-on:student-arrived-or-left="arrivedOrLeft"
-                    v-on:student-deleted="studentDeleted">
+                        v-bind:student="student"
+                        v-bind:key="student.starID"
+                        v-bind:edit="editTable"
+                        v-on:student-arrived-or-left="arrivedOrLeft"
+                        v-on:student-deleted="studentDeleted">
                     </student-row>
 
                 </table>
